@@ -1,0 +1,16 @@
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from settings import DB_CONFIG
+DB_NAME=DB_CONFIG['dbname']
+DB_USER=DB_CONFIG['user']
+DB_PASSWORD=DB_CONFIG['password']
+DB_HOST=DB_CONFIG['host']
+DB_PORT=DB_CONFIG['port']
+IMAGE_DIR=Path(__file__).resolve().parent/'img'
+BACKGROUND_IMAGE=(IMAGE_DIR/'bg1.png').as_posix()
+DOG_IMAGE=(IMAGE_DIR/'dogw.png').as_posix()
+EYE_OPEN=(IMAGE_DIR/'eye-open.png').as_posix()
+EYE_CLOSE=(IMAGE_DIR/'eye-close.png').as_posix()
+AUTOFILL_IMAGE=(IMAGE_DIR/'triangle.png').as_posix()
+GLOBAL_STYLES = '\n    QMainWindow { background-color: #E8F5E9; }\n    QLabel { color: #333333; }\n    \n    QLineEdit, QComboBox, QTextEdit { \n        background-color: white;\n        color: black;\n        padding: 10px; \n        border: 1px solid #ccc; \n        border-radius: 5px; \n        font-size: 14px;\n    }\n    QLineEdit::placeholder, QTextEdit::placeholder { color: #888888; }\n    \n    QComboBox QAbstractItemView {\n        background-color: white;\n        color: black;\n        border: 1px solid #ccc;\n        selection-background-color: #1976D2;\n        selection-color: white;\n    }\n    \n    QLineEdit[error="true"], QComboBox[error="true"] {\n        border: 2px solid red;\n    }\n    QLineEdit[error="true"]::placeholder {\n        color: red;\n    }\n    \n    QComboBox::drop-down { border: none; width: 30px; }\n    \n    /* НОВОЕ: Стили для чекбокса */\n    QCheckBox {\n        font-size: 14px;\n        color: #333333;\n        spacing: 8px;\n    }\n    QCheckBox::indicator {\n        width: 20px;\n        height: 20px;\n        border-radius: 4px;\n        border: 2px solid #1976D2;\n        background-color: white;\n    }\n    QCheckBox::indicator:checked {\n        background-color: #1976D2;\n        image: url(check.png); /* PyQt сам нарисует галочку, если убрать image, или зальет цветом */\n    }\n    \n    QPushButton {\n        background-color: #1976D2;\n        color: white;\n        border-radius: 5px;\n        padding: 12px;\n        font-size: 16px;\n        font-weight: bold;\n    }\n    QPushButton:hover { background-color: #1565C0; }\n    \n    QPushButton#outline_btn {\n        background-color: white;\n        color: black;\n        border: none; \n    }\n    QPushButton#outline_btn:hover { background-color: #f0f0f0; }\n    \n    QPushButton#back_btn {\n        background-color: transparent;\n        color: white;\n        font-size: 16px;\n        font-weight: bold;\n        text-align: left;\n        padding: 0px;\n        border: none;\n    }\n    QPushButton#back_btn:hover { color: #cccccc; }\n    \n    QPushButton#big_back_btn {\n        background-color: transparent;\n        color: white;\n        font-size: 28px;\n        font-weight: bold;\n        text-align: left;\n        padding: 0px;\n        border: none;\n    }\n    QPushButton#big_back_btn:hover { color: #cccccc; }\n    \n    QFrame#form_container {\n        background-color: rgba(248, 249, 250, 0.95); \n        border-radius: 15px;\n    }\n    \n    QLabel.field_label {\n        font-size: 13px;\n        font-weight: bold;\n        color: #444;\n        padding-left: 2px;\n    }\n'

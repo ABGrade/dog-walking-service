@@ -1,0 +1,23 @@
+name: dog-walking-demo
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: dog_walking_demo
+      POSTGRES_USER: dog_demo
+      POSTGRES_PASSWORD: dog_demo
+    ports:
+      - "127.0.0.1:15432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dog_demo -d dog_walking_demo"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "127.0.0.1:16379:6379"
+volumes:
+  postgres_data:
